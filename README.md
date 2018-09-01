@@ -282,11 +282,13 @@ def get_init_cell(batch_size, rnn_size):
     lstm = tf.contrib.rnn.BasicLSTMCell(rnn_size)
     
     # Add dropout to the cell
-    drop = tf.contrib.rnn.DropoutWrapper(lstm, output_keep_prob=keep_prob)
+#     drop = tf.contrib.rnn.DropoutWrapper(lstm, output_keep_prob=keep_prob)
     
     # Stack up multiple LSTM layers, for deep learning
-    cell = tf.contrib.rnn.MultiRNNCell([drop] * lstm_layers)
+#     cell = tf.contrib.rnn.MultiRNNCell([drop] * lstm_layers)
     
+    cell = tf.contrib.rnn.MultiRNNCell([lstm] * 1)
+
     # Getting an initial state of all zeros
     initial_state = cell.zero_state(batch_size, tf.float32)
  
@@ -588,46 +590,46 @@ with tf.Session(graph=train_graph) as sess:
     print('Model Trained and Saved')
 ```
 
-    Epoch   0 Batch    0/2   train_loss = 8.819
-    Epoch  25 Batch    0/2   train_loss = 3.737
-    Epoch  50 Batch    0/2   train_loss = 2.715
-    Epoch  75 Batch    0/2   train_loss = 2.171
-    Epoch 100 Batch    0/2   train_loss = 1.828
-    Epoch 125 Batch    0/2   train_loss = 1.580
-    Epoch 150 Batch    0/2   train_loss = 1.374
-    Epoch 175 Batch    0/2   train_loss = 1.220
-    Epoch 200 Batch    0/2   train_loss = 1.082
-    Epoch 225 Batch    0/2   train_loss = 0.998
-    Epoch 250 Batch    0/2   train_loss = 0.891
-    Epoch 275 Batch    0/2   train_loss = 0.834
-    Epoch 300 Batch    0/2   train_loss = 0.768
-    Epoch 325 Batch    0/2   train_loss = 0.720
-    Epoch 350 Batch    0/2   train_loss = 0.660
-    Epoch 375 Batch    0/2   train_loss = 0.623
-    Epoch 400 Batch    0/2   train_loss = 0.597
-    Epoch 425 Batch    0/2   train_loss = 0.574
-    Epoch 450 Batch    0/2   train_loss = 0.555
-    Epoch 475 Batch    0/2   train_loss = 0.525
-    Epoch 500 Batch    0/2   train_loss = 0.509
-    Epoch 525 Batch    0/2   train_loss = 0.497
-    Epoch 550 Batch    0/2   train_loss = 0.491
-    Epoch 575 Batch    0/2   train_loss = 0.463
-    Epoch 600 Batch    0/2   train_loss = 0.469
-    Epoch 625 Batch    0/2   train_loss = 0.446
-    Epoch 650 Batch    0/2   train_loss = 0.443
-    Epoch 675 Batch    0/2   train_loss = 0.422
-    Epoch 700 Batch    0/2   train_loss = 0.420
-    Epoch 725 Batch    0/2   train_loss = 0.413
-    Epoch 750 Batch    0/2   train_loss = 0.425
-    Epoch 775 Batch    0/2   train_loss = 0.464
-    Epoch 800 Batch    0/2   train_loss = 0.513
-    Epoch 825 Batch    0/2   train_loss = 0.574
-    Epoch 850 Batch    0/2   train_loss = 0.511
-    Epoch 875 Batch    0/2   train_loss = 0.418
-    Epoch 900 Batch    0/2   train_loss = 0.379
-    Epoch 925 Batch    0/2   train_loss = 0.354
-    Epoch 950 Batch    0/2   train_loss = 0.344
-    Epoch 975 Batch    0/2   train_loss = 0.338
+    Epoch   0 Batch    0/2   train_loss = 8.821
+    Epoch  25 Batch    0/2   train_loss = 3.141
+    Epoch  50 Batch    0/2   train_loss = 1.700
+    Epoch  75 Batch    0/2   train_loss = 0.999
+    Epoch 100 Batch    0/2   train_loss = 0.610
+    Epoch 125 Batch    0/2   train_loss = 0.356
+    Epoch 150 Batch    0/2   train_loss = 0.208
+    Epoch 175 Batch    0/2   train_loss = 0.132
+    Epoch 200 Batch    0/2   train_loss = 0.088
+    Epoch 225 Batch    0/2   train_loss = 0.068
+    Epoch 250 Batch    0/2   train_loss = 0.058
+    Epoch 275 Batch    0/2   train_loss = 0.052
+    Epoch 300 Batch    0/2   train_loss = 0.048
+    Epoch 325 Batch    0/2   train_loss = 0.049
+    Epoch 350 Batch    0/2   train_loss = 0.101
+    Epoch 375 Batch    0/2   train_loss = 0.059
+    Epoch 400 Batch    0/2   train_loss = 0.051
+    Epoch 425 Batch    0/2   train_loss = 0.047
+    Epoch 450 Batch    0/2   train_loss = 0.045
+    Epoch 475 Batch    0/2   train_loss = 0.043
+    Epoch 500 Batch    0/2   train_loss = 0.042
+    Epoch 525 Batch    0/2   train_loss = 0.041
+    Epoch 550 Batch    0/2   train_loss = 0.041
+    Epoch 575 Batch    0/2   train_loss = 0.040
+    Epoch 600 Batch    0/2   train_loss = 0.040
+    Epoch 625 Batch    0/2   train_loss = 0.039
+    Epoch 650 Batch    0/2   train_loss = 0.039
+    Epoch 675 Batch    0/2   train_loss = 0.039
+    Epoch 700 Batch    0/2   train_loss = 0.038
+    Epoch 725 Batch    0/2   train_loss = 0.038
+    Epoch 750 Batch    0/2   train_loss = 0.038
+    Epoch 775 Batch    0/2   train_loss = 0.038
+    Epoch 800 Batch    0/2   train_loss = 0.038
+    Epoch 825 Batch    0/2   train_loss = 0.038
+    Epoch 850 Batch    0/2   train_loss = 0.037
+    Epoch 875 Batch    0/2   train_loss = 0.037
+    Epoch 900 Batch    0/2   train_loss = 0.037
+    Epoch 925 Batch    0/2   train_loss = 0.037
+    Epoch 950 Batch    0/2   train_loss = 0.037
+    Epoch 975 Batch    0/2   train_loss = 0.037
     Model Trained and Saved
 
 
@@ -683,7 +685,7 @@ def get_tensors(loaded_graph):
     InitialStateTensor = loaded_graph.get_tensor_by_name("initial_state:0")
     FinalStateTensor= loaded_graph.get_tensor_by_name("final_state:0")
     ProbsTensor = loaded_graph.get_tensor_by_name("probs:0")
-    return InputTensor, InitialStateTensor, FinalStateTensor, ProbsTensor
+    return (InputTensor, InitialStateTensor, FinalStateTensor, ProbsTensor)
 
 
 """
@@ -778,7 +780,15 @@ with tf.Session(graph=loaded_graph) as sess:
 ```
 
     INFO:tensorflow:Restoring parameters from ./save
-    moe_szyslak: loaded jump woodchucks befriend lenny's smelling weight tonic quarter lenny's faceful alien clenched or knows might buddies pasta concentrate bart's saved dames thousand fall his shop excellent patrons edelbrock ha-ha picked massive make potato short_man: round boys stood castle chic maude narrator: backing occurred shipment mob gut the parked fendin' dance darkness verticality game glass old whatchacallit caricature lodge infor release these boxer: batmobile sheets excellent deer swell happened jane patrons: pre-recorded collector's askin' sucking sooo edna_krabappel-flanders: bobo lease specific professor's swishifyin' politician fix simp-sonnnn majority uh-huh beautiful o'reilly cavern eyed sass decide: dennis nagurski breathless cowboy octa- become advertise celebration elizabeth renee spit-backs depending inexorable szyslak gags anti-lock crime aging rats ineffective trust itchy guff tv_husband: honey hate um horns project ones 35 score channel eight-year-old disgraceful meant nuts kentucky caholic caholic lanes forty-seven entirely stays dame /mr inning inning saga lot morning exception: anti-lock optimistic optimistic fifty comeback ron freely never touch stay-puft man'd christopher publishers england's fourteen: valley fontaine total wouldn't-a housework sacrilicious punching binoculars young_barfly: burnin' binoculars emphasis delighted medieval wad tv_announcer: knock-up pronounce unlike launch size spotting disgusted brightening simplest 250 entering ron_howard: owner know intelligent pleading chance midnight image looked disappeared midnight wife's luv
+    moe_szyslak: oh, so you're looking for a mr. smithers, eh? first name, waylon, is it?(suddenly vicious) listen to me, you... when i catch you, i'm going to pull out your eyes and shove 'em up your kids' names.
+    lenny_leonard: man, i've always wondered you have no collateral, i'm gonna have to break your legs in advance.
+    homer_simpson:(looking at his legs) gosh, moe, i use these all the time. couldn't you just bash my life.
+    moe_szyslak:(") oh, oh, no.
+    homer_simpson:(sad) i don't want your pity booze. i'll pay for it myself.
+    moe_szyslak: uh, i gotta check with lenny on that. uh, is that all right, everybody, i'm calling in your bar tabs.
+    moe_szyslak: ya bunch of ungrateful ingrates! ya--
+    moe_szyslak:(distraught) ah, homer, what am i gonna do? renee's my last chance for true love.
+    homer_simpson: if i couldn't spend the treasure on
 
 
 # The TV Script is Nonsensical
